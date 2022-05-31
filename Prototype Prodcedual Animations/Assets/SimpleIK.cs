@@ -5,33 +5,33 @@ using UnityEngine;
 
 public class SimpleIK : MonoBehaviour
 {
- 
-    // Chain length of bones
+
+    // Kette von den Knochen die aneinander sind -> Arm,...
     public int ChainLength = 2;
- 
-    // Target the chain should bent to
+
+    // Orientierungs Transforms wie die Kette sich beugen soll
     public Transform Target;
     public Transform Pole;
 
- 
-    // Solver iterations per update
+
+    // Iterationen per Update
     [Header("Solver Parameters")]
     public int Iterations = 10;
 
-    // Distance when the solver stops
+    // Distanz wann der Solver stoppt
     public float Delta = 0.001f;
 
-    // Strength of going back to the start position.  
+    // Stärke vom Snapback zur start position
     [Range(0, 1)]
     public float SnapBackStrength = 1f;
 
-    protected float[] BonesLength; //Target to Origin
-    protected float CompleteLength;
-    protected Transform[] Bones;
+    protected float[] BonesLength; // Länge Knochen
+    protected float CompleteLength; // Länge des Gelenks
+    protected Transform[] Bones; // Reference auf Child Bones
     protected Vector3[] Positions;
     protected Vector3[] StartDirectionSucc;
-    protected Quaternion[] StartRotationBone;
-    protected Quaternion StartRotationTarget;
+    protected Quaternion[] StartRotationBone; // Initial Rotation von jedem Knochen
+    protected Quaternion StartRotationTarget; // Initial Rotation von Vieh (?)
     protected Transform Root;
 
 
@@ -43,15 +43,15 @@ public class SimpleIK : MonoBehaviour
 
     void Init()
     {
-        //initial array
+        // Initialisier Arrays mithilfe von chainLength
         Bones = new Transform[ChainLength + 1];
         Positions = new Vector3[ChainLength + 1];
         BonesLength = new float[ChainLength];
         StartDirectionSucc = new Vector3[ChainLength + 1];
         StartRotationBone = new Quaternion[ChainLength + 1];
 
-        //find root
-        Root = transform;
+        // Suche Root
+        Root = transform; // Das Objekt muss am ende des Gelenks sein -> Fingerspitze
         for (var i = 0; i <= ChainLength; i++)
         {
             if (Root == null)
@@ -59,8 +59,8 @@ public class SimpleIK : MonoBehaviour
             Root = Root.parent;
         }
 
-        //init target
-        if (Target == null)
+        // Initialisier Target - Wo das Gelenk positioniert wird
+        if (Target == null) // Suche dir das Target
         {
             Target = new GameObject(gameObject.name + " Target").transform;
             SetPositionRootSpace(Target, GetPositionRootSpace(transform));
@@ -68,7 +68,7 @@ public class SimpleIK : MonoBehaviour
         StartRotationTarget = GetRotationRootSpace(Target);
 
 
-        //init data
+        // Initialisier Bone Daten 
         var current = transform;
         CompleteLength = 0;
         for (var i = Bones.Length - 1; i >= 0; i--)
@@ -78,12 +78,12 @@ public class SimpleIK : MonoBehaviour
 
             if (i == Bones.Length - 1)
             {
-                //leaf
+                // Leaf Bone - Ganz außen - Finger
                 StartDirectionSucc[i] = GetPositionRootSpace(Target) - GetPositionRootSpace(current);
             }
             else
             {
-                //mid bone
+                // Mid Bones
                 StartDirectionSucc[i] = GetPositionRootSpace(Bones[i + 1]) - GetPositionRootSpace(current);
                 BonesLength[i] = StartDirectionSucc[i].magnitude;
                 CompleteLength += BonesLength[i];
@@ -110,8 +110,6 @@ public class SimpleIK : MonoBehaviour
         if (BonesLength.Length != ChainLength)
             Init();
 
-        //Fabric
-
         //  root
         //  (bone0) (bonelen 0) (bone1) (bonelen 1) (bone2)...
         //   x--------------------x--------------------x---...
@@ -123,12 +121,13 @@ public class SimpleIK : MonoBehaviour
         var targetPosition = GetPositionRootSpace(Target);
         var targetRotation = GetRotationRootSpace(Target);
 
-        //1st is possible to reach?
+        // Kann der erste das Ziel erreichen?
         if ((targetPosition - GetPositionRootSpace(Bones[0])).sqrMagnitude >= CompleteLength * CompleteLength)
         {
-            //just strech it
+            //Stretch
             var direction = (targetPosition - Positions[0]).normalized;
-            //set everything after root
+
+            //Setze alles nach Root
             for (int i = 1; i < Positions.Length; i++)
                 Positions[i] = Positions[i - 1] + direction * BonesLength[i - 1];
         }
@@ -140,26 +139,27 @@ public class SimpleIK : MonoBehaviour
             for (int iteration = 0; iteration < Iterations; iteration++)
             {
                 //https://www.youtube.com/watch?v=UNoX65PRehA
-                //back
+
+                // Zurück
                 for (int i = Positions.Length - 1; i > 0; i--)
                 {
                     if (i == Positions.Length - 1)
-                        Positions[i] = targetPosition; //set it to target
+                        Positions[i] = targetPosition;
                     else
                         Positions[i] = Positions[i + 1] + (Positions[i] - Positions[i + 1]).normalized * BonesLength[i]; //set in line on distance
                 }
 
-                //forward
+                // Nach vorn
                 for (int i = 1; i < Positions.Length; i++)
                     Positions[i] = Positions[i - 1] + (Positions[i] - Positions[i - 1]).normalized * BonesLength[i - 1];
 
-                //close enough?
+                // Nah genug:
                 if ((Positions[Positions.Length - 1] - targetPosition).sqrMagnitude < Delta * Delta)
                     break;
             }
         }
 
-        //move towards pole
+        // Bewege zum Pole
         if (Pole != null)
         {
             var polePosition = GetPositionRootSpace(Pole);
@@ -173,7 +173,7 @@ public class SimpleIK : MonoBehaviour
             }
         }
 
-        //set position & rotation
+        // Setze Position & Rotation
         for (int i = 0; i < Positions.Length; i++)
         {
             if (i == Positions.Length - 1)
@@ -202,7 +202,6 @@ public class SimpleIK : MonoBehaviour
 
     private Quaternion GetRotationRootSpace(Transform current)
     {
-        //inverse(after) * before => rot: before -> after
         if (Root == null)
             return current.rotation;
         else
