@@ -30,7 +30,7 @@ public class Targetpoint : MonoBehaviour
             Vector3 adjustPosition = new Vector3(transform.position.x, hit.point.y, transform.position.z);
             transform.position = adjustPosition + offset;
             Debug.DrawRay(transform.position + offset, transform.TransformDirection(Vector3.up) * detectionRange, Color.green);
-
+            Debug.Log("Hitted: " + hit.transform.gameObject.name);
             MoveTarget();
         }
         else
@@ -88,24 +88,24 @@ public class Targetpoint : MonoBehaviour
         #endregion
     }
 
-    private void OnDrawGizmos()
-    {
-        //Center Punkt Sphere
-        Handles.color = Color.cyan;
-        Handles.DrawWireDisc(transform.position, Vector3.up, 0.02f);
-        Handles.DrawWireDisc(transform.position, Vector3.forward, 0.02f);
-        Handles.DrawWireDisc(transform.position, Vector3.right, 0.02f);
+    //private void OnDrawGizmos()
+    //{
+    //    //Center Punkt Sphere
+    //    Handles.color = Color.cyan;
+    //    Handles.DrawWireDisc(transform.position, Vector3.up, 0.02f);
+    //    Handles.DrawWireDisc(transform.position, Vector3.forward, 0.02f);
+    //    Handles.DrawWireDisc(transform.position, Vector3.right, 0.02f);
 
-        //legTransform Sphere
-        Handles.color = Color.yellow;
-        Handles.DrawWireDisc(legTransform.position, Vector3.up, 0.05f);
-        Handles.DrawWireDisc(legTransform.position, Vector3.forward, 0.05f);
-        Handles.DrawWireDisc(legTransform.position, Vector3.right, 0.05f);
+    //    //legTransform Sphere
+    //    Handles.color = Color.yellow;
+    //    Handles.DrawWireDisc(legTransform.position, Vector3.up, 0.05f);
+    //    Handles.DrawWireDisc(legTransform.position, Vector3.forward, 0.05f);
+    //    Handles.DrawWireDisc(legTransform.position, Vector3.right, 0.05f);
 
-        //targetTransform Sphere
-        Handles.color = Color.green;
-        Handles.DrawWireDisc(targetTransform.position, Vector3.up, 0.03f);
-        Handles.DrawWireDisc(targetTransform.position, Vector3.forward, 0.03f);
-        Handles.DrawWireDisc(targetTransform.position, Vector3.right, 0.03f);
-    }
+    //    //targetTransform Sphere
+    //    Handles.color = Color.green;
+    //    Handles.DrawWireDisc(targetTransform.position, Vector3.up, 0.03f);
+    //    Handles.DrawWireDisc(targetTransform.position, Vector3.forward, 0.03f);
+    //    Handles.DrawWireDisc(targetTransform.position, Vector3.right, 0.03f);
+    //}
 }
