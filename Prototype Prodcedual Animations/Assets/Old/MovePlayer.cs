@@ -6,6 +6,7 @@ public class MovePlayer : MonoBehaviour
 {
     public bool isAuto = false;
     public float speed;
+    public float rotSpeed = 0.1f;
 
     private void Update()
     {
@@ -15,7 +16,12 @@ public class MovePlayer : MonoBehaviour
         {
             float x = Input.GetAxis("Horizontal");
             float y = Input.GetAxis("Vertical");
-            transform.Translate(new Vector3(x, 0f, y) * speed * Time.deltaTime);
+
+            if (x != 0)
+                transform.Rotate(new Vector3(transform.rotation.x, transform.rotation.y + speed * x * Time.deltaTime, transform.rotation.z));
+
+            if (y != 0)
+                transform.Translate((-Vector3.forward * y) * rotSpeed * Time.deltaTime);
         }
     }
 }
