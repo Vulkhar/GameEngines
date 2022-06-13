@@ -48,8 +48,7 @@ public class Target : MonoBehaviour
         {
             Debug.DrawRay(transform.position + offset, Vector3.down * rayLength, Color.red);
 
-            Debug.Log("Use Last Correct Position");
-            Debug.Break();
+            Debug.LogWarning("Use Last Correct Position");
             transform.position = lastCorrectPosition;
         }
     }
