@@ -6,7 +6,7 @@ public class BodyAdaption : MonoBehaviour
 {
     [Header("Body Height")]
     public float divider = 25f; //Das Raw Average hat einen zu großen Einfluss auf die Body position, deswegen wird es durch diesen wert dividiert
-    private float startBodyHeight;
+    public float startBodyHeight;
 
     [Header("Body Rotation")]
     [SerializeField] private Transform leftBackLeg, rightBackLeg, leftFrontLeg, rightFrontLeg;
@@ -23,11 +23,12 @@ public class BodyAdaption : MonoBehaviour
 
     private void Update()
     {
-        AdjustBodyPosition();
-
+        //FixBodyHeight();
+        //AdjustBodyPosition();
         Rotate();
     }
 
+    public Transform player;
     private void AdjustBodyPosition()
     {
         float legAverage = (leftBackLeg.position.y + rightBackLeg.position.y + leftFrontLeg.position.y + rightFrontLeg.position.y) / 4;
@@ -36,6 +37,29 @@ public class BodyAdaption : MonoBehaviour
 
         if (startBodyHeight + legAverage != transform.localPosition.z)
             transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, 0.02f + legAverage);
+    }
+
+    [Header("Fix Body")]
+    //public float startDistanceToGround = 0f;
+    public float allowedOffset = 0.02f;
+    public float checkPosRange = 1f;
+    public LayerMask groundLayer;
+    private void FixBodyHeight()
+    {
+        RaycastHit hit;
+
+        //Wenn er trifft
+        if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.up), out hit, checkPosRange, groundLayer))
+        {
+            float distanceToGround = Vector3.Distance(transform.position, hit.point);
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.up) * checkPosRange, Color.cyan);
+
+            if (distanceToGround > distanceToGround + allowedOffset || distanceToGround < distanceToGround - allowedOffset)
+                transform.position = new Vector3(transform.localPosition.x, startBodyHeight, transform.localPosition.z);
+        }
+        else
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.up) * checkPosRange, Color.red);
+
     }
 
     //TODO: Lerping wie bei Fußpositions
