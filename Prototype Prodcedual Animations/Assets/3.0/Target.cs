@@ -20,6 +20,7 @@ public class Target : MonoBehaviour
     public Transform legRig; //Referenz auf BL Target, FL Target,... im Rig
     private Leg leg;
     public float maxDistanceToMove = 2f; //Distance wann sich das Bein bewegen muss
+    public Leg[] oppositeLegs; //Referenz zu den Beinen bei dem sich dieses Bein nicht bewegen darf wenn sie sich bewegen
 
     [Header("Fix X-Z Positions")]
     public Vector3 initialPosition; //Lokal X,Z werden benutzt damit sich die Punkte nur nach oben und unten verschieben
@@ -73,11 +74,29 @@ public class Target : MonoBehaviour
     {
         float currentDistance = Vector3.Distance(transform.position, legRig.position);
 
-        if(currentDistance > maxDistanceToMove && !leg.isMoving)
-        {
+        bool canMove = true;
 
-            //leg.currentPos = transform.position-offset;
+        foreach (Leg l in oppositeLegs)
+        {
+            if (l.isMoving)
+            {
+                canMove = false;
+                break;
+            }
+        }
+
+        /*Bewege das Bein nur wenn:
+         *Die Distanz zu diesem Target überschritten wird
+         *Das Bein sich gerade nicht bewegt
+          Die gegenüberliegende Beine sich gerade nicht bewegen*/
+        if(currentDistance > maxDistanceToMove && !leg.isMoving && canMove)
+        {
             leg.MoveLeg(transform.position - offset);
+
+            #region Backup - Snappy Movement
+            //Snappy Movement - Backup (falls das benutzt wird muss Leg.cs angepasst werden)
+            //leg.currentPos = transform.position-offset;
+            #endregion
         }
     }
 
