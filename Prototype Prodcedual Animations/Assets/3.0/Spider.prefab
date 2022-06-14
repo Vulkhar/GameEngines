@@ -529,7 +529,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 128174303391044063}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5, y: -0.93, z: 1.6}
+  m_LocalPosition: {x: 1.5, y: -0.93, z: 0.4}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 128174305087582100}
@@ -562,7 +562,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b9783c50ab5301f4aa32e56bcd13ac07, type: 2}
+  - {fileID: 2100000, guid: 3eefa9249f5df9a4fb18aa14ed5d06a0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -609,15 +609,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4a08570af080884db7bb563de9a8d5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rayLength: 0.22
+  rayLength: 3
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   rayColor: {r: 0, g: 1, b: 0, a: 1}
-  offset: {x: 0, y: 0.05, z: 0}
+  offset: {x: 0, y: 0.47, z: 0}
   lastCorrectPosition: {x: 0, y: 0, z: 0}
   legRig: {fileID: 128174303445393798}
   maxDistanceToMove: 1.25
+  initialPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &128174303418540522
 GameObject:
   m_ObjectHideFlags: 0
@@ -728,8 +729,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentPos: {x: 0, y: 0, z: 0}
   isMoving: 0
-  startSlerpPos: {x: 0, y: 0, z: 0}
-  targetSlerpPos: {x: 0, y: 0, z: 0}
+  startPos: {fileID: 0}
+  endPos: {x: 0, y: 0, z: 0}
+  journeyTime: 0.4
+  speed: 1.35
+  arcValue: 0.5
 --- !u!1 &128174303422236280
 GameObject:
   m_ObjectHideFlags: 0
@@ -886,7 +890,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d76072c475f9585439063ad13505bf4a, type: 2}
+  - {fileID: 2100000, guid: 46ce0eee9cd79b74e8a1f68b0e2c7820, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -935,8 +939,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentPos: {x: 0, y: 0, z: 0}
   isMoving: 0
-  startSlerpPos: {x: 0, y: 0, z: 0}
-  targetSlerpPos: {x: 0, y: 0, z: 0}
+  startPos: {fileID: 0}
+  endPos: {x: 0, y: 0, z: 0}
+  journeyTime: 0.4
+  speed: 1.35
+  arcValue: 0.5
 --- !u!1 &128174303469796560
 GameObject:
   m_ObjectHideFlags: 0
@@ -1331,7 +1338,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 128174303872895864}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5, y: -0.93, z: 1.6}
+  m_LocalPosition: {x: -1.5, y: -0.93, z: 0.4}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 128174305087582100}
@@ -1364,7 +1371,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b9783c50ab5301f4aa32e56bcd13ac07, type: 2}
+  - {fileID: 2100000, guid: 3eefa9249f5df9a4fb18aa14ed5d06a0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1411,15 +1418,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4a08570af080884db7bb563de9a8d5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rayLength: 0.22
+  rayLength: 3
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   rayColor: {r: 0, g: 1, b: 0, a: 1}
-  offset: {x: 0, y: 0.05, z: 0}
+  offset: {x: 0, y: 0.47, z: 0}
   lastCorrectPosition: {x: 0, y: 0, z: 0}
   legRig: {fileID: 128174305273896203}
   maxDistanceToMove: 1.25
+  initialPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &128174303943678176
 GameObject:
   m_ObjectHideFlags: 0
@@ -1934,15 +1942,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4a08570af080884db7bb563de9a8d5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rayLength: 0.22
+  rayLength: 3
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   rayColor: {r: 0, g: 1, b: 0, a: 1}
-  offset: {x: 0, y: 0.05, z: 0}
+  offset: {x: 0, y: 0.47, z: 0}
   lastCorrectPosition: {x: 0, y: 0, z: 0}
   legRig: {fileID: 128174303418540533}
   maxDistanceToMove: 1.25
+  initialPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &128174304295287869
 GameObject:
   m_ObjectHideFlags: 0
@@ -2337,8 +2346,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentPos: {x: 0, y: 0, z: 0}
   isMoving: 0
-  startSlerpPos: {x: 0, y: 0, z: 0}
-  targetSlerpPos: {x: 0, y: 0, z: 0}
+  startPos: {fileID: 0}
+  endPos: {x: 0, y: 0, z: 0}
+  journeyTime: 0.4
+  speed: 1.35
+  arcValue: 0.5
 --- !u!1 &128174304948401333
 GameObject:
   m_ObjectHideFlags: 0
@@ -2735,7 +2747,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 128174305186786190}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5, y: -0.93, z: -0.65}
+  m_LocalPosition: {x: 1.5, y: -0.93, z: -0.4}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 128174305087582100}
@@ -2815,15 +2827,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4a08570af080884db7bb563de9a8d5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rayLength: 0.22
+  rayLength: 3
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   rayColor: {r: 0, g: 1, b: 0, a: 1}
-  offset: {x: 0, y: 0.05, z: 0}
+  offset: {x: 0, y: 0.47, z: 0}
   lastCorrectPosition: {x: 0, y: 0, z: 0}
   legRig: {fileID: 128174304903314436}
   maxDistanceToMove: 1.25
+  initialPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &128174305189070526
 GameObject:
   m_ObjectHideFlags: 0
@@ -2865,7 +2878,6 @@ GameObject:
   - component: {fileID: 128174305249870763}
   - component: {fileID: 128174305249870760}
   - component: {fileID: 128174305249870761}
-  - component: {fileID: 128174305249870766}
   - component: {fileID: 128174305249870773}
   - component: {fileID: 128174305249870762}
   - component: {fileID: 62872431}
@@ -2947,19 +2959,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &128174305249870766
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 128174305249870767}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &128174305249870773
 Animator:
   serializedVersion: 3
@@ -3008,7 +3007,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAuto: 0
-  moveSpeed: 4
+  moveSpeed: 2
   rotSpeed: 45
 --- !u!114 &487123053130479738
 MonoBehaviour:
@@ -3027,7 +3026,12 @@ MonoBehaviour:
   - {fileID: 128174305273896203}
   - {fileID: 128174304903314436}
   - {fileID: 128174303445393798}
-  startY: 0
+  offset: 1
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 64
+  rayLength: 0.25
+  rotationMultiplier: 20
 --- !u!1 &128174305273896200
 GameObject:
   m_ObjectHideFlags: 0
@@ -3089,7 +3093,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d76072c475f9585439063ad13505bf4a, type: 2}
+  - {fileID: 2100000, guid: 46ce0eee9cd79b74e8a1f68b0e2c7820, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3138,5 +3142,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentPos: {x: 0, y: 0, z: 0}
   isMoving: 0
-  startSlerpPos: {x: 0, y: 0, z: 0}
-  targetSlerpPos: {x: 0, y: 0, z: 0}
+  startPos: {fileID: 0}
+  endPos: {x: 0, y: 0, z: 0}
+  journeyTime: 0.4
+  speed: 1.35
+  arcValue: 0.5

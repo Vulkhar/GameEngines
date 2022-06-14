@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// source: https://github.com/ditzel/SimpleIK
+/// </summary>
 public class SimpleIKLook : MonoBehaviour
 {
     /// <summary>

@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Input handling vom Spieler der auf procedual anim ausgelegt ist
+/// </summary>
 public class Controller : MonoBehaviour
 {
-    public bool isAuto = false;
-    public float moveSpeed = 2f;
-    public float rotSpeed = 2f;
+    public bool isAuto = false; //Automatisches laufen wenn true
+    public float moveSpeed = 2f; //Bewegungsgeschwindigkeit
+    public float rotSpeed = 2f; //Rotationsgeschwindigkeit
 
     private void Update()
     {

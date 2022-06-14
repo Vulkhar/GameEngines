@@ -3,6 +3,11 @@ using UnityEditor;
 #endif
 using UnityEngine;
 
+/// <summary>
+/// source: https://github.com/ditzel/SimpleIK
+/// nur neue Kommentare gemacht
+/// </summary>
+
 public class SimpleIK : MonoBehaviour
 {
 
