@@ -26,7 +26,7 @@ public class Body : MonoBehaviour
     public Transform[] legs; //Referenz der RIG Beine (BL Target, FL Target,...)
     public float offset; //Um den Ray höher anzusetzen
     public LayerMask groundMask;
-    public float rayLength = 3f;
+    public float rayLength = 3f; //WIRD NICHT BENUTZT????
 
     /// <summary>
     /// Setze die Y-Pos des Körpers anhand der durchschnittlichen
