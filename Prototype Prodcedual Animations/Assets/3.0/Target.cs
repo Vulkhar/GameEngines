@@ -73,17 +73,21 @@ public class Target : MonoBehaviour
     private void MoveLeg()
     {
         float currentDistance = Vector3.Distance(transform.position, legRig.position);
-
         bool canMove = true;
 
-        foreach (Leg l in oppositeLegs)
+        if(oppositeLegs.Length != 0)
         {
-            if (l.isMoving)
+            foreach (Leg l in oppositeLegs)
             {
-                canMove = false;
-                break;
+                if (l.isMoving)
+                {
+                    canMove = false;
+                    break;
+                }
             }
         }
+        else
+            Debug.LogWarning("Opposite Legs not defined");
 
         /*Bewege das Bein nur wenn:
          *Die Distanz zu diesem Target überschritten wird

@@ -235,13 +235,13 @@ public class SimpleIK : MonoBehaviour
         }
 
         //Pole
-        if(Pole != null)
-        {
-            Handles.color = Color.yellow;
-            Handles.DrawWireDisc(Pole.position, Vector3.up, 0.03f);
-            Handles.DrawWireDisc(Pole.position, Vector3.forward, 0.03f);
-            Handles.DrawWireDisc(Pole.position, Vector3.right, 0.03f);
-        }
+        //if(Pole != null)
+        //{
+        //    Handles.color = Color.yellow;
+        //    Handles.DrawWireDisc(Pole.position, Vector3.up, 0.03f);
+        //    Handles.DrawWireDisc(Pole.position, Vector3.forward, 0.03f);
+        //    Handles.DrawWireDisc(Pole.position, Vector3.right, 0.03f);
+        //}
 #endif
     }
 

@@ -22,8 +22,8 @@ public class Leg : MonoBehaviour
     [Header("Smooth Positioning")]
     public Transform startPos; //Start wenn ein neuer Lerp beginnt
     public Vector3 endPos; //Ziel während des Lerps
-    public float journeyTime = 1f; //Dauer des Lerps
-    public float speed; //Schnelligkeit des Lerps
+    public float journeyTime = .5f; //Dauer des Lerps
+    public float speed = 1f; //Schnelligkeit des Lerps
     public float arcValue = 0.5f; //0.5 -> Richtiger Step im Halbkreis
 
     private float startTime;

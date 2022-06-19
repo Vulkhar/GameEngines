@@ -2115,6 +2115,9 @@ MonoBehaviour:
   lastCorrectPosition: {x: 0, y: 0, z: 0}
   legRig: {fileID: 2969705277857173353}
   maxDistanceToMove: 2.2
+  oppositeLegs:
+  - {fileID: 2969705277113316243}
+  - {fileID: 2969705277137056736}
   initialPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &2969705277056354946
 GameObject:
@@ -3316,6 +3319,9 @@ MonoBehaviour:
   lastCorrectPosition: {x: 0, y: 0, z: 0}
   legRig: {fileID: 2969705277137056740}
   maxDistanceToMove: 2.2
+  oppositeLegs:
+  - {fileID: 2969705277857173365}
+  - {fileID: 2969705278027689570}
   initialPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &2969705277651633124
 GameObject:
@@ -3586,6 +3592,9 @@ MonoBehaviour:
   lastCorrectPosition: {x: 0, y: 0, z: 0}
   legRig: {fileID: 2969705278027689574}
   maxDistanceToMove: 2.2
+  oppositeLegs:
+  - {fileID: 2969705277113316243}
+  - {fileID: 2969705277137056736}
   initialPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &2969705277767114634
 GameObject:
@@ -4416,6 +4425,9 @@ MonoBehaviour:
   lastCorrectPosition: {x: 0, y: 0, z: 0}
   legRig: {fileID: 2969705277113316247}
   maxDistanceToMove: 2.2
+  oppositeLegs:
+  - {fileID: 2969705277857173365}
+  - {fileID: 2969705278027689570}
   initialPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &2969705278518537823
 GameObject:
