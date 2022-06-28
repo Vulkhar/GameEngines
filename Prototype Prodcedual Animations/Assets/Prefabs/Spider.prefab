@@ -516,7 +516,7 @@ GameObject:
   - component: {fileID: 128174303391044058}
   m_Layer: 0
   m_Name: FR
-  m_TagString: Untagged
+  m_TagString: DebugMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -618,6 +618,7 @@ MonoBehaviour:
   lastCorrectPosition: {x: 0, y: 0, z: 0}
   legRig: {fileID: 128174303445393798}
   maxDistanceToMove: 1.25
+  oppositeLegs: []
   initialPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &128174303418540522
 GameObject:
@@ -634,7 +635,7 @@ GameObject:
   - component: {fileID: 128174303418540529}
   m_Layer: 0
   m_Name: BL Target
-  m_TagString: Untagged
+  m_TagString: DebugMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -844,7 +845,7 @@ GameObject:
   - component: {fileID: 128174303445393794}
   m_Layer: 0
   m_Name: FR Target
-  m_TagString: Untagged
+  m_TagString: DebugMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1325,7 +1326,7 @@ GameObject:
   - component: {fileID: 128174303872895815}
   m_Layer: 0
   m_Name: FL
-  m_TagString: Untagged
+  m_TagString: DebugMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1427,6 +1428,7 @@ MonoBehaviour:
   lastCorrectPosition: {x: 0, y: 0, z: 0}
   legRig: {fileID: 128174305273896203}
   maxDistanceToMove: 1.25
+  oppositeLegs: []
   initialPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &128174303943678176
 GameObject:
@@ -1849,7 +1851,7 @@ GameObject:
   - component: {fileID: 128174304251308674}
   m_Layer: 0
   m_Name: BL
-  m_TagString: Untagged
+  m_TagString: DebugMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1951,6 +1953,7 @@ MonoBehaviour:
   lastCorrectPosition: {x: 0, y: 0, z: 0}
   legRig: {fileID: 128174303418540533}
   maxDistanceToMove: 1.25
+  oppositeLegs: []
   initialPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &128174304295287869
 GameObject:
@@ -2251,7 +2254,7 @@ GameObject:
   - component: {fileID: 128174304903314432}
   m_Layer: 0
   m_Name: BR Target
-  m_TagString: Untagged
+  m_TagString: DebugMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2734,7 +2737,7 @@ GameObject:
   - component: {fileID: 128174305186786197}
   m_Layer: 0
   m_Name: BR
-  m_TagString: Untagged
+  m_TagString: DebugMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2836,6 +2839,7 @@ MonoBehaviour:
   lastCorrectPosition: {x: 0, y: 0, z: 0}
   legRig: {fileID: 128174304903314436}
   maxDistanceToMove: 1.25
+  oppositeLegs: []
   initialPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &128174305189070526
 GameObject:
@@ -3047,7 +3051,7 @@ GameObject:
   - component: {fileID: 128174305273896215}
   m_Layer: 0
   m_Name: FL Target
-  m_TagString: Untagged
+  m_TagString: DebugMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
